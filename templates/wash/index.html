@@ -1,0 +1,1292 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="ru-RU">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+
+
+    <style type="text/css">
+        img.wp-smiley,
+        img.emoji {
+            display: inline !important;
+            border: none !important;
+            box-shadow: none !important;
+            height: 1em !important;
+            width: 1em !important;
+            margin: 0 0.07em !important;
+            vertical-align: -0.1em !important;
+            background: none !important;
+            padding: 0 !important;
+        }
+
+        #message {
+            color: black;
+        }
+        section {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        section.contact-us #contact {
+            margin-top: -6rem;
+            margin-left: -2.4rem !important;
+            position: relative;
+            display: block;
+            width: 680px;
+            height: 32rem !important;
+            background-color: #fff;
+            padding: 40px;
+            margin-right: auto;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        section.contact-us .section-heading {
+            position: relative;
+            display: block;
+            margin: auto;
+        }
+
+        .section-heading h4 {
+            line-height: 40px;
+            font-size: 28px;
+            font-weight: 900;
+            color: #dc8cdb;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        input, textarea {
+            width: 300px;
+            position: relative;
+            display: block;
+            background-color: #f4f7fb;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            border: none;
+            box-shadow: none;
+            border-radius: 5px;
+            outline-color: #9e9e9e;
+        }
+
+        input {
+            height: 40px;
+            padding: 0px 15px;
+        }
+
+        textarea {
+            min-height: 140px;
+            max-height: 180px;
+            padding: 15px;
+            resize: none;
+        }
+
+        .contact-us span {
+            height: 20px;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .valid_info_name, .valid_info_email, .valid_info_message {
+            display: inline-block;
+            font-size: 13px;
+            margin: 5px 2px;
+        }
+
+
+        .valid {
+            border: 2px solid green;
+            outline-color: green;
+        }
+
+        .invalid {
+            border: 2px solid red;
+            outline-color: red;
+        }
+
+        .btn {
+            display: inline-flex;
+            width: 100%;
+            justify-content: flex-end;
+        }
+
+        #form-submit {
+            position: relative;
+            display: inline-block;
+            float: right;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #fff;
+            background: rgb(219, 138, 222);
+            background: linear-gradient(-145deg, rgba(219, 138, 222, 1) 0%, rgba(246, 191, 159, 1) 100%);
+            padding: 12px 20px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: all .3s;
+            transition: all .3s;
+        }
+
+        #form-submit:disabled {
+            border: 1px solid #9e9e9e;
+            background: transparent;
+            color: #9e9e9e;
+            transition: none;
+            transform: none;
+            cursor: default;
+        }
+
+        #form-submit:hover:disabled {
+            border: 1px solid #9e9e9e;
+            color: #9e9e9e;
+            background: transparent;
+            transition: none;
+            transform: none;
+            cursor: default;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        button.ghost {
+            background-color: transparent;
+            border-color: #FFFFFF;
+        }
+    </style>
+    <style id='classic-theme-styles-inline-css' type='text/css'>
+        /*! This file is auto-generated */
+        .wp-block-button__link {
+            color: #fff;
+            background-color: #32373c;
+            border-radius: 9999px;
+            box-shadow: none;
+            text-decoration: none;
+            padding: calc(.667em + 2px) calc(1.333em + 2px);
+            font-size: 1.125em
+        }
+
+        .wp-block-file__button {
+            background: #32373c;
+            color: #fff;
+            text-decoration: none
+        }
+    </style>
+    <style id='global-styles-inline-css' type='text/css'>
+        body {
+            --wp--preset--color--black: #000000;
+            --wp--preset--color--cyan-bluish-gray: #abb8c3;
+            --wp--preset--color--white: #ffffff;
+            --wp--preset--color--pale-pink: #f78da7;
+            --wp--preset--color--vivid-red: #cf2e2e;
+            --wp--preset--color--luminous-vivid-orange: #ff6900;
+            --wp--preset--color--luminous-vivid-amber: #fcb900;
+            --wp--preset--color--light-green-cyan: #121413;
+            --wp--preset--color--vivid-green-cyan: #060606;
+            --wp--preset--color--pale-cyan-blue: #8ed1fc;
+            --wp--preset--color--vivid-cyan-blue: #0693e3;
+            --wp--preset--color--vivid-purple: #9b51e0;
+            --wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg, rgba(6, 147, 227, 1) 0%, rgb(155, 81, 224) 100%);
+            --wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg, rgb(122, 220, 180) 0%, rgb(0, 208, 130) 100%);
+            --wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg, rgba(252, 185, 0, 1) 0%, rgba(255, 105, 0, 1) 100%);
+            --wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg, rgba(255, 105, 0, 1) 0%, rgb(207, 46, 46) 100%);
+            --wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg, rgb(238, 238, 238) 0%, rgb(169, 184, 195) 100%);
+            --wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg, rgb(74, 234, 220) 0%, rgb(151, 120, 209) 20%, rgb(207, 42, 186) 40%, rgb(238, 44, 130) 60%, rgb(251, 105, 98) 80%, rgb(254, 248, 76) 100%);
+            --wp--preset--gradient--blush-light-purple: linear-gradient(135deg, rgb(255, 206, 236) 0%, rgb(152, 150, 240) 100%);
+            --wp--preset--gradient--blush-bordeaux: linear-gradient(135deg, rgb(254, 205, 165) 0%, rgb(254, 45, 45) 50%, rgb(107, 0, 62) 100%);
+            --wp--preset--gradient--luminous-dusk: linear-gradient(135deg, rgb(255, 203, 112) 0%, rgb(199, 81, 192) 50%, rgb(65, 88, 208) 100%);
+            --wp--preset--gradient--pale-ocean: linear-gradient(135deg, rgb(255, 245, 203) 0%, rgb(182, 227, 212) 50%, rgb(51, 167, 181) 100%);
+            --wp--preset--gradient--electric-grass: linear-gradient(135deg, rgb(202, 248, 128) 0%, rgb(113, 206, 126) 100%);
+            --wp--preset--gradient--midnight: linear-gradient(135deg, rgb(2, 3, 129) 0%, rgb(40, 116, 252) 100%);
+            --wp--preset--font-size--small: 13px;
+            --wp--preset--font-size--medium: 20px;
+            --wp--preset--font-size--large: 36px;
+            --wp--preset--font-size--x-large: 42px;
+            --wp--preset--spacing--20: 0.44rem;
+            --wp--preset--spacing--30: 0.67rem;
+            --wp--preset--spacing--40: 1rem;
+            --wp--preset--spacing--50: 1.5rem;
+            --wp--preset--spacing--60: 2.25rem;
+            --wp--preset--spacing--70: 3.38rem;
+            --wp--preset--spacing--80: 5.06rem;
+            --wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);
+            --wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);
+            --wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);
+            --wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);
+            --wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);
+        }
+
+        :where(.is-layout-flex) {
+            gap: 0.5em;
+        }
+
+        :where(.is-layout-grid) {
+            gap: 0.5em;
+        }
+
+        body .is-layout-flow > .alignleft {
+            float: left;
+            margin-inline-start: 0;
+            margin-inline-end: 2em;
+        }
+
+        body .is-layout-flow > .alignright {
+            float: right;
+            margin-inline-start: 2em;
+            margin-inline-end: 0;
+        }
+
+        .vc_single_image-img {
+            height: max-content;
+            margin-top: -2rem;
+        }
+
+        body .is-layout-flow > .aligncenter {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        body .is-layout-constrained > .alignleft {
+            float: left;
+            margin-inline-start: 0;
+            margin-inline-end: 2em;
+        }
+
+        body .is-layout-constrained > .alignright {
+            float: right;
+            margin-inline-start: 2em;
+            margin-inline-end: 0;
+        }
+
+        body .is-layout-constrained > .aligncenter {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+            max-width: var(--wp--style--global--content-size);
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        body .is-layout-constrained > .alignwide {
+            max-width: var(--wp--style--global--wide-size);
+        }
+
+        body .is-layout-flex {
+            display: flex;
+        }
+
+        body .is-layout-flex {
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        body .is-layout-flex > * {
+            margin: 0;
+        }
+
+        body .is-layout-grid {
+            display: grid;
+        }
+
+        body .is-layout-grid > * {
+            margin: 0;
+        }
+
+        :where(.wp-block-columns.is-layout-flex) {
+            gap: 2em;
+        }
+
+        :where(.wp-block-columns.is-layout-grid) {
+            gap: 2em;
+        }
+
+        :where(.wp-block-post-template.is-layout-flex) {
+            gap: 1.25em;
+        }
+
+        :where(.wp-block-post-template.is-layout-grid) {
+            gap: 1.25em;
+        }
+
+        .has-black-color {
+            color: var(--wp--preset--color--black) !important;
+        }
+
+        .has-cyan-bluish-gray-color {
+            color: var(--wp--preset--color--cyan-bluish-gray) !important;
+        }
+
+        .has-white-color {
+            color: var(--wp--preset--color--white) !important;
+        }
+
+        .has-pale-pink-color {
+            color: var(--wp--preset--color--pale-pink) !important;
+        }
+
+        .has-vivid-red-color {
+            color: var(--wp--preset--color--vivid-red) !important;
+        }
+
+        .has-luminous-vivid-orange-color {
+            color: var(--wp--preset--color--luminous-vivid-orange) !important;
+        }
+
+        .has-luminous-vivid-amber-color {
+            color: var(--wp--preset--color--luminous-vivid-amber) !important;
+        }
+
+        .has-light-green-cyan-color {
+            color: var(--wp--preset--color--light-green-cyan) !important;
+        }
+
+        .has-vivid-green-cyan-color {
+            color: var(--wp--preset--color--vivid-green-cyan) !important;
+        }
+
+        .has-pale-cyan-blue-color {
+            color: var(--wp--preset--color--pale-cyan-blue) !important;
+        }
+
+        .has-vivid-cyan-blue-color {
+            color: var(--wp--preset--color--vivid-cyan-blue) !important;
+        }
+
+        .has-vivid-purple-color {
+            color: var(--wp--preset--color--vivid-purple) !important;
+        }
+
+        .has-black-background-color {
+            background-color: var(--wp--preset--color--black) !important;
+        }
+
+        .has-cyan-bluish-gray-background-color {
+            background-color: var(--wp--preset--color--cyan-bluish-gray) !important;
+        }
+
+        .has-white-background-color {
+            background-color: var(--wp--preset--color--white) !important;
+        }
+
+        .has-pale-pink-background-color {
+            background-color: var(--wp--preset--color--pale-pink) !important;
+        }
+
+        .has-vivid-red-background-color {
+            background-color: var(--wp--preset--color--vivid-red) !important;
+        }
+
+        .has-luminous-vivid-orange-background-color {
+            background-color: var(--wp--preset--color--luminous-vivid-orange) !important;
+        }
+
+        .has-luminous-vivid-amber-background-color {
+            background-color: var(--wp--preset--color--luminous-vivid-amber) !important;
+        }
+
+        .has-light-green-cyan-background-color {
+            background-color: var(--wp--preset--color--light-green-cyan) !important;
+        }
+
+        .has-vivid-green-cyan-background-color {
+            background-color: var(--wp--preset--color--vivid-green-cyan) !important;
+        }
+
+        .has-pale-cyan-blue-background-color {
+            background-color: var(--wp--preset--color--pale-cyan-blue) !important;
+        }
+
+        .has-vivid-cyan-blue-background-color {
+            background-color: var(--wp--preset--color--vivid-cyan-blue) !important;
+        }
+
+        .has-vivid-purple-background-color {
+            background-color: var(--wp--preset--color--vivid-purple) !important;
+        }
+
+        .has-black-border-color {
+            border-color: var(--wp--preset--color--black) !important;
+        }
+
+        .has-cyan-bluish-gray-border-color {
+            border-color: var(--wp--preset--color--cyan-bluish-gray) !important;
+        }
+
+        .has-white-border-color {
+            border-color: var(--wp--preset--color--white) !important;
+        }
+
+        .has-pale-pink-border-color {
+            border-color: var(--wp--preset--color--pale-pink) !important;
+        }
+
+        .has-vivid-red-border-color {
+            border-color: var(--wp--preset--color--vivid-red) !important;
+        }
+
+        .has-luminous-vivid-orange-border-color {
+            border-color: var(--wp--preset--color--luminous-vivid-orange) !important;
+        }
+
+        .has-luminous-vivid-amber-border-color {
+            border-color: var(--wp--preset--color--luminous-vivid-amber) !important;
+        }
+
+        .has-light-green-cyan-border-color {
+            border-color: var(--wp--preset--color--light-green-cyan) !important;
+        }
+
+        .has-vivid-green-cyan-border-color {
+            border-color: var(--wp--preset--color--vivid-green-cyan) !important;
+        }
+
+        .has-pale-cyan-blue-border-color {
+            border-color: var(--wp--preset--color--pale-cyan-blue) !important;
+        }
+
+        .has-vivid-cyan-blue-border-color {
+            border-color: var(--wp--preset--color--vivid-cyan-blue) !important;
+        }
+
+        .has-vivid-purple-border-color {
+            border-color: var(--wp--preset--color--vivid-purple) !important;
+        }
+
+        .has-vivid-cyan-blue-to-vivid-purple-gradient-background {
+            background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;
+        }
+
+        .has-light-green-cyan-to-vivid-green-cyan-gradient-background {
+            background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;
+        }
+
+        .has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background {
+            background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;
+        }
+
+        .has-luminous-vivid-orange-to-vivid-red-gradient-background {
+            background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;
+        }
+
+        .has-very-light-gray-to-cyan-bluish-gray-gradient-background {
+            background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;
+        }
+
+        .has-cool-to-warm-spectrum-gradient-background {
+            background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;
+        }
+
+        .has-blush-light-purple-gradient-background {
+            background: var(--wp--preset--gradient--blush-light-purple) !important;
+        }
+
+        .has-blush-bordeaux-gradient-background {
+            background: var(--wp--preset--gradient--blush-bordeaux) !important;
+        }
+
+        .has-luminous-dusk-gradient-background {
+            background: var(--wp--preset--gradient--luminous-dusk) !important;
+        }
+
+        .has-pale-ocean-gradient-background {
+            background: var(--wp--preset--gradient--pale-ocean) !important;
+        }
+
+        .has-electric-grass-gradient-background {
+            background: var(--wp--preset--gradient--electric-grass) !important;
+        }
+
+        .has-midnight-gradient-background {
+            background: var(--wp--preset--gradient--midnight) !important;
+        }
+
+        .has-small-font-size {
+            font-size: var(--wp--preset--font-size--small) !important;
+        }
+
+        .has-medium-font-size {
+            font-size: var(--wp--preset--font-size--medium) !important;
+        }
+
+        .has-large-font-size {
+            font-size: var(--wp--preset--font-size--large) !important;
+        }
+
+        .has-x-large-font-size {
+            font-size: var(--wp--preset--font-size--x-large) !important;
+        }
+
+        .wp-block-navigation a:where(:not(.wp-element-button)) {
+            color: inherit;
+        }
+
+        :where(.wp-block-post-template.is-layout-flex) {
+            gap: 1.25em;
+        }
+
+        :where(.wp-block-post-template.is-layout-grid) {
+            gap: 1.25em;
+        }
+
+        :where(.wp-block-columns.is-layout-flex) {
+            gap: 2em;
+        }
+
+        :where(.wp-block-columns.is-layout-grid) {
+            gap: 2em;
+        }
+
+        .wp-block-pullquote {
+            font-size: 1.5em;
+            line-height: 1.6;
+        }
+
+        #contact {
+            height: 45rem !important;
+            margin-top: -10rem;
+        }
+    </style>
+    <link rel='stylesheet' id='contact-form-7-css'
+          href='https://cleanhouse.com.ru/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.8.1'
+          type='text/css' media='all'/>
+    <link rel='stylesheet' id='wp-pagenavi-css'
+          href='https://cleanhouse.com.ru/wp-content/plugins/wp-pagenavi/pagenavi-css.css?ver=2.70' type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='wp-mcm-styles-css'
+          href='https://cleanhouse.com.ru/wp-content/plugins/wp-media-category-management/css/wp-mcm-styles.css?ver=2.1.3.1'
+          type='text/css' media='all'/>
+    <link rel='stylesheet' id='fontawesome-css'
+          href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='montserrat-css' href='https://fonts.googleapis.com/css?family=Montserrat:400,700,900'
+          type='text/css' media='all'/>
+    <link rel='stylesheet' id='raleway-css' href='http://fonts.fontstorage.com/import/raleway.css' type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='highslide-css'
+          href='https://cleanhouse.com.ru/wp-content/themes/clean/shared/highslide-4.1.13/highslide.min.css?ver=6.3.2'
+          type='text/css' media='all'/>
+    <link rel='stylesheet' id='lightbox-css'
+          href='https://cleanhouse.com.ru/wp-content/themes/clean/lightbox2/css/lightbox.css?ver=6.3.2' type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='style-my-css'
+          href='https://cleanhouse.com.ru/wp-content/themes/clean/style.css?ver=6.3.2' type='text/css' media='all'/>
+    <link rel='stylesheet' id='main-css'
+          href='https://cleanhouse.com.ru/wp-content/themes/clean/dist/css/main.css?ver=6.3.2' type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='tablepress-default-css'
+          href='https://cleanhouse.com.ru/wp-content/tablepress-combined.min.css?ver=18' type='text/css' media='all'/>
+    <link rel='stylesheet' id='js_composer_front-css'
+          href='https://cleanhouse.com.ru/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=5.5.2'
+          type='text/css' media='all'/>
+    <link rel='stylesheet' id='wp_review-style-css'
+          href='https://cleanhouse.com.ru/wp-content/plugins/wp-review/public/css/wp-review.css?ver=5.3.5'
+          type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='cf7cf-style-css'
+          href='https://cleanhouse.com.ru/wp-content/plugins/cf7-conditional-fields/style.css?ver=2.3.11'
+          type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='cf7_calculator-css'
+          href='https://cleanhouse.com.ru/wp-content/plugins/cf7-cost-calculator-price-calculation/frontend/js/style.css?ver=6.3.2'
+          type='text/css' media='all'/>
+    <script id="image-watermark-no-right-click-js-before" type="text/javascript">
+        var iwArgsNoRightClick = {"rightclick": "N", "draganddrop": "Y"};
+    </script>
+    <script type='text/javascript'
+            src='https://cleanhouse.com.ru/wp-content/plugins/image-watermark/js/no-right-click.js?ver=1.7.3'
+            id='image-watermark-no-right-click-js'></script>
+    <script type='text/javascript'
+            src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js?ver=6.3.2'
+            id='foundation-js'></script>
+    <script type='text/javascript' src='https://cleanhouse.com.ru/wp-includes/js/jquery/jquery.min.js?ver=3.7.0'
+            id='jquery-core-js'></script>
+    <script type='text/javascript' src='https://cleanhouse.com.ru/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1'
+            id='jquery-migrate-js'></script>
+    <script type='text/javascript'
+            src='https://cleanhouse.com.ru/wp-content/plugins/cf7-cost-calculator-price-calculation/frontend/js/autoNumeric-1.9.45.js?ver=1.9.45'
+            id='autoNumeric-js'></script>
+    <script type='text/javascript'
+            src='https://cleanhouse.com.ru/wp-content/plugins/cf7-cost-calculator-price-calculation/frontend/js/formula_evaluator-min.js?ver=6.3.2'
+            id='formula_evaluator-js'></script>
+    <script type='text/javascript' id='cf7_calculator-js-extra'>
+        /* <![CDATA[ */
+        var cf7_calculator = {"pro": ""};
+        /* ]]> */
+    </script>
+    <script type='text/javascript'
+            src='https://cleanhouse.com.ru/wp-content/plugins/cf7-cost-calculator-price-calculation/frontend/js/cf7_calculator.js?ver=6.3.2'
+            id='cf7_calculator-js'></script>
+    <link rel="https://api.w.org/" href="https://cleanhouse.com.ru/wp-json/"/>
+    <link rel="alternate" type="application/json" href="https://cleanhouse.com.ru/wp-json/wp/v2/pages/15"/>
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://cleanhouse.com.ru/xmlrpc.php?rsd"/>
+    <meta name="generator" content="WordPress 6.3.2"/>
+    <link rel='shortlink' href='https://cleanhouse.com.ru/'/>
+    <link rel="alternate" type="application/json+oembed"
+          href="https://cleanhouse.com.ru/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcleanhouse.com.ru%2F"/>
+    <link rel="alternate" type="text/xml+oembed"
+          href="https://cleanhouse.com.ru/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcleanhouse.com.ru%2F&#038;format=xml"/>
+    <meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress."/>
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" type="text/css"
+          href="https://cleanhouse.com.ru/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen">
+    <![endif]-->
+    <link rel="icon" href="{% static 'image/logo.png' %}" sizes="32x32"/>
+    <link rel="icon" href="{% static 'image/logo.png' %}"
+          sizes="192x192"/>
+    <link rel="apple-touch-icon" href="https://cleanhouse.com.ru/wp-content/uploads/2015/08/logo-e1440840922818.png"/>
+    <meta name="msapplication-TileImage"
+          content="https://cleanhouse.com.ru/wp-content/uploads/2015/08/logo-e1440840922818.png"/>
+    <style type="text/css" id="wp-custom-css">
+        .header-form .wpcf7 .wpcf7-total {
+            background: 0 0;
+            font-size: 31px !important;
+            font-family: Montserrat, sans-serif;
+            color: #555;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+    </style>
+    <style type="text/css" data-type="vc_shortcodes-custom-css">
+        .vc_custom_1595625982614 {
+            background-color: #666666 !important;
+        }
+
+        .vc_custom_1595624429889 {
+            background-color: #e5e5e5 !important;
+        }
+
+        .vc_custom_1595622521082 {
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+        }
+    </style>
+    <noscript>
+        <style type="text/css">
+            .wpb_animate_when_almost_visible {
+                opacity: 1;
+            }
+        </style>
+    </noscript>
+
+</head>
+
+<body class="home page-template-default page page-id-15 wpb-js-composer js-comp-ver-5.5.2 vc_responsive">
+
+<header class="main-header">
+    <div class="container row row-align-center row-space-between">
+
+        <a href="/" class="logo col" style="padding: 0;">
+            <img src="{% static 'image/logo_1.png' %}" style="width: 160px; height: 100px;">
+        </a>
+
+        <div class="col contact-header row row-align-center">
+            <div class="font-big text-center font-accented row row-vertical">
+                <a href="tel:+7 915 195 57 97" class="color-text">+998 90 863 22 30</a>
+                <a href="{% url 'index' %}" class="margin-tiny-t hide-sm-max font-small color-text"
+                   data-open="call-back"
+                   aria-controls="call-back" aria-haspopup="true" tabindex="0">Aloqaga chiqish uchun</a>
+            </div>
+        </div>
+
+        <div class="menu-icon" type="button" data-toggle="main-menu"></div>
+
+    </div> <!-- container -->
+
+    <nav id="main-menu" class="menu-top-wrap shadow main-menu">
+        <div class="menu-icon" type="button" data-toggle="main-menu"></div>
+        <ul id="menu-osnovnoe-menyu" class="menu-top menu-default">
+            <li id="menu-item-3905" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3905">
+                <a href="#">Aloqaga chiqish</a></li>
+            <li id="menu-item-3905" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3905">
+                <a href="#">Shikoyat</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<h1 class="container text-center home-h1">Clean House Companiyasi </h1>
+
+<section class="row first-section relative">
+
+    <div class="col-lg-6 col-xs-12 dark front-cta padding-big-v relative first">
+        <div class="bg-full"
+             style="background-image: url(https://cleanhouse.com.ru/wp-content/uploads/2021/03/img3.jpg);"></div>
+        <div
+                class="row row-justify-center row-align-center row-vertical-md-max text-center lg-padding-big-h relative">
+            <div class="text-trans margin-big-b bg-fixed text-clip"
+                 style=" background-image: url(https://cleanhouse.com.ru/wp-content/uploads/2021/03/img3.jpg);">
+                UY
+            </div>
+            <nav class="hide-menu fiz">
+                <ul id="menu-uslugi-dlya-fiz-licz" class="fiz-menu menu-default">
+                    <li id="menu-item-3889"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3889"><a
+                            href="#">Uy yig'ish tig'ishtirishda yordan</a>
+                    </li>
+                    <li id="menu-item-6492"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6492"><a
+                            href="#">Umumiy tozalash</a></li>
+                    <li id="menu-item-242"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-242"><a
+                            title="Уборка после ремонта коттеджа, квартиры, офиса. Цена 80 руб/кв м"
+                            href="#">Tamirlashdan keyingi yig'ishtirish</a></li>
+
+                </ul>
+            </nav>
+            <button class="primary margin-big-t bg hide-lg" data-open="order">Buyurtma berish</button>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-xs-12 dark front-cta padding-big-v relative second">
+        <div class="bg-full"
+             style="background-image: url(https://cleanhouse.com.ru/wp-content/uploads/2021/03/img2.jpg);"></div>
+        <div
+                class="row row-justify-center row-align-center row-vertical-md-max text-center lg-padding-big-h relative">
+            <div class="text-trans margin-big-b bg-fixed text-clip"
+                 style="background-image: url(https://cleanhouse.com.ru/wp-content/uploads/2021/03/img2.jpg);">
+                Offislar
+            </div>
+            <nav class="hide-menu ur">
+                <ul id="menu-uslugi-dlya-yur-lits" class="ur-menu menu-default">
+                    <li id="menu-item-3807"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3807"><a
+                            href="#">Kun ora tozalash</a></li>
+                    <li id="menu-item-2401"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2401"><a
+                            href="#">Skladlarni tozalash</a></li>
+                    <li id="menu-item-239"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-239"><a
+                            title="Уборка помещений после ремонта. Цена 80 руб/кв м"
+                            href="#">Tamirlashdan keyingi yig'ishtirish</a></li>
+
+                </ul>
+            </nav>
+            <button class="primary margin-big-t bg hide-lg" data-open="order">Buyurtma berish</button>
+        </div>
+    </div>
+
+
+    <button class="primary font-big uppercase hide-lg-max" data-open="order">Buyurtma berish</button>
+
+</section>
+
+
+<div class="container row">
+
+    <div class="main-center col col-xs-12">
+        <div class="vc_row wpb_row vc_row-fluid">
+            <div class="padding-medium-v wpb_column vc_column_container vc_col-sm-12">
+                <div class="vc_column-inner ">
+                    <div class="wpb_wrapper">
+                        <h2 style="font-size: 24px;text-align: center" class="vc_custom_heading h2">Tozalashda
+                            profisional yondashish</h2>
+                        <div class="vc_row wpb_row vc_inner vc_row-fluid padding-big-v">
+                            <div class="padding-big-h wpb_column vc_column_container vc_col-sm-4">
+                                <div class="vc_column-inner ">
+                                    <div class="wpb_wrapper">
+                                        <div style="width: 100%; display: flex; justify-content: center; font-size: 60px;">
+                                            <i class="fa-regular fa-circle-check"></i>
+                                        </div>
+
+                                        <div style="text-align: center" class="vc_custom_heading  h3">
+                                            Kafolat
+                                        </div>
+                                        <div class="wpb_text_column wpb_content_element ">
+                                            <div class="wpb_wrapper">
+                                                <p style="text-align: center;">Tozalash ishlarini boshlashdan oldin
+                                                    Clean House kompaniyasi tozalash shartnomasini tuzadi .</p>
+                                                <p style="text-align: center;">Ushbu Shartnoma bo'yicha
+                                                    Tozalash xizmati shaxsiy xavfsizligi uchun javobgardir:
+                                                    mijozning buyimlari.</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padding-big-h wpb_column vc_column_container vc_col-sm-4">
+                                <div class="vc_column-inner ">
+                                    <div class="wpb_wrapper">
+                                        <div style="width: 100%; display: flex; justify-content: center; font-size: 60px;">
+                                            <i class="fa-solid fa-shield"></i>
+                                        </div>
+                                        <div style="text-align: center" class="vc_custom_heading  h3">
+                                            Eng asosiysi xavfsizlik
+                                        </div>
+                                        <div class="wpb_text_column wpb_content_element ">
+                                            <div class="wpb_wrapper">
+                                                <p style="text-align: center;">Ob'ektni tozalash uchun
+                                                    sertifikatlangan tozalash vositalaridan foydalaniladi.</p>
+                                                <p style="text-align: center;">Grux o'zlari bilan olib keladigan ish
+                                                    qurollari: changyutgichlar, bug 'generatori, zinapoyalar va
+                                                    jihozlar.</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padding-big-h wpb_column vc_column_container vc_col-sm-4">
+                                <div class="vc_column-inner ">
+                                    <div class="wpb_wrapper">
+                                        <div style="width: 100%; display: flex; justify-content: center; font-size: 60px;">
+                                            <i class="fa-regular fa-thumbs-up"></i>
+                                        </div>
+                                        <div style="text-align: center" class="vc_custom_heading  h3">
+                                            Sifat
+                                        </div>
+                                        <div class="wpb_text_column wpb_content_element ">
+                                            <div class="wpb_wrapper">
+                                                <p style="text-align: center;">Har bit uyni tozalash guruhida
+                                                    boshqaruvchi bor. U saytda ishni nazorat qiladi
+                                                    tozalash boshlanishidan mijozga uy yetkazib berilgunga qadar.</p>
+                                                <p style="text-align: center;">Barcha kamchiliklar bir vaqtning o'zida
+                                                    yo'q qilinadi.</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true"
+             class="vc_row wpb_row vc_row-fluid color-white call-manager vc_custom_1595625982614 vc_row-has-fill vc_row-o-equal-height vc_row-o-content-middle vc_row-flex">
+            <div class="padding-no wpb_column vc_column_container vc_col-sm-6">
+                <div class="vc_column-inner ">
+                    <div class="wpb_wrapper">
+                        <div class="wpb_single_image wpb_content_element vc_align_left   margin-no">
+
+                            <figure class="wpb_wrapper vc_figure">
+                                <div class="vc_single_image-wrapper   vc_box_border_grey"><img width="1000"
+                                                                                               height="727"
+                                                                                               src="https://twogalsandabroomkc.com/wp-content/uploads/2021/09/cleaning-a-home.jpeg"
+                                                                                               class="vc_single_image-img attachment-full"
+                                                                                               alt="Уборка после ремонта от клининговой компании Clean House"
+                                                                                               decoding="async"
+                                                                                               fetchpriority="high"
+                                                                                               srcset="https://twogalsandabroomkc.com/wp-content/uploads/2021/09/cleaning-a-home.jpeg 1000w, https://cleanhouse.com.ru/wp-content/uploads/2021/03/img1-300x218.jpg 300w, https://cleanhouse.com.ru/wp-content/uploads/2021/03/img1-768x558.jpg 768w"
+                                                                                               sizes="(max-width: 1000px) 100vw, 1000px"/>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                    class="text-center padding-medium-h form-on-grey container-slice-6 push-left wpb_column vc_column_container vc_col-sm-6">
+                <div class="vc_column-inner ">
+                    <div class="wpb_wrapper">
+                        <div style="text-align: center" class="vc_custom_heading h3">
+                        </div>
+                        <div class="wpcf7 no-js" id="wpcf7-f3833-p15-o1" lang="ru-RU" dir="ltr">
+                            <div class="screen-reader-response">
+                                <p role="status" aria-live="polite" aria-atomic="true"></p>
+                                <ul></ul>
+                            </div>
+                            <section class="contact-us" id="contact-section">
+                                <form id="contact" action="{% url 'index' %}" method="post">
+                                    {% csrf_token %}
+                                    <div class="inputField">
+                                        <input type="name" name="name" id="name" placeholder="Your name"
+                                               autocomplete="on" required>
+                                        <span class="valid_info_name"></span>
+                                    </div>
+
+                                    <div class="inputField">
+                                        <input type="text" name="number" id="email" placeholder="Your number"
+                                               required=""/>
+                                        <span class="valid_info_email"></span>
+                                    </div>
+
+                                    <div class="inputField">
+                                        <textarea name="message" id="message" placeholder="Your message"></textarea>
+                                        <span class="valid_info_message"></span>
+                                    </div>
+
+                                    <div class="inputField btn">
+                                        <button type="submit" id="form-submit" class="main-gradient-button">
+                                            Send a message
+                                        </button>
+                                    </div>
+
+                                </form>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="vc_row-full-width vc_clearfix"></div>
+        <div class="vc_row wpb_row vc_row-fluid">
+            <section class="container text-center padding-tiny-v promo-section">
+                <div class="h3 margin-small-v">Bizdagi narxlar bilan tanishing</div>
+                <!-- comes from shortcode to insert the template part from visual builder -->
+
+                <div class="row row-align-end">
+
+
+                    <a href="#"
+                       class="col-xs-12 col-sm-4 promo-link sm-max-padding-medium-v">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>Tamirlashdan keyingi tozalash <br><span
+                            class="font-smaller color-ash font-accented"> 300 k so'm</span>
+                    </a>
+
+                    <a href="#"
+                       class="col-xs-12 col-sm-4 promo-link sm-max-padding-medium-v">
+                        <i class="fa-solid fa-broom"></i>To'liq tozalash <br><span
+                            class="font-smaller color-ash font-accented"> 200 k so'm</span>
+                    </a>
+
+                    <a href=""
+                       class="col-xs-12 col-sm-4 promo-link sm-max-padding-medium-v">
+                        <i class="fa-solid fa-soap"></i>Yengil tozalash<br><span
+                            class="font-smaller color-ash font-accented">100 k so'm</span>
+                    </a>
+
+                </div>
+
+            </section>
+            <div class="wpb_column vc_column_container vc_col-sm-12">
+                <div class="vc_column-inner ">
+                    <div class="wpb_wrapper"></div>
+                </div>
+            </div>
+        </div>
+        <div data-vc-full-width="true" data-vc-full-width-init="false"
+             class="vc_row wpb_row vc_row-fluid vc_custom_1595624429889 vc_row-has-fill vc_row-o-equal-height vc_row-o-content-middle vc_row-flex">
+            <div class="container-slice-6 padding-big push-right wpb_column vc_column_container vc_col-sm-6">
+                <div class="vc_column-inner ">
+                    <div class="wpb_wrapper">
+                        <div class="wpb_text_column wpb_content_element ">
+                            <div class="wpb_wrapper">
+                                <h3>Nima uchun mijozlar bizni tanlashadi</h3>
+                                <p>Qashqadaryodagi eng sifatli va ishonchli tozalash xizmat</p>
+                                <p>tozalash mobaynida hech qanaqa muommo bo'lmaskligiga kafolat beramiz</p>
+                                <p>Vaqtning tejalishi</p>
+                                <p>Tozalash xizmati uchun faqat tajribali ishchilar jalb qilinadi</p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wpb_column vc_column_container vc_col-sm-6 vc_col-has-fill">
+                <div class="vc_column-inner vc_custom_1595622521082">
+                    <div class="wpb_wrapper">
+                        <div class="wpb_single_image wpb_content_element vc_align_left">
+
+                            <figure class="wpb_wrapper vc_figure">
+                                <div class="vc_single_image-wrapper   vc_box_border_grey"><img width="1000"
+                                                                                               height="667"
+                                                                                               src="https://dp3d2hb4975es.cloudfront.net/uploads/lovemycleanhouse/2023/2/18/1676742441profetionalhousecleaninginMcKinneyTX.jpeg"
+                                                                                               class="vc_single_image-img attachment-full"
+                                                                                               alt="Домработница, ваша помощница по дому - от компании Clean House,"
+                                                                                               decoding="async"
+                                                                                               srcset="https://dp3d2hb4975es.cloudfront.net/uploads/lovemycleanhouse/2023/2/18/1676742441profetionalhousecleaninginMcKinneyTX.jpeg 1000w, https://cleanhouse.com.ru/wp-content/uploads/2019/04/Domrabotnitsa-ot-kompanii-Clean-House-e1613923515201-300x200.jpg 300w, https://cleanhouse.com.ru/wp-content/uploads/2019/04/Domrabotnitsa-ot-kompanii-Clean-House-e1613923515201-768x512.jpg 768w"
+                                                                                               sizes="(max-width: 1000px) 100vw, 1000px"/>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="vc_row-full-width vc_clearfix"></div>
+
+        <div class="vc_row wpb_row vc_row-fluid">
+            <div class="wpb_column vc_column_container vc_col-sm-12">
+                <div class="vc_column-inner ">
+                    <div class="wpb_wrapper">
+                        <div style="font-size: 24px;text-align: center" class="vc_custom_heading h2">Hamkorlar
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="vc_row wpb_row vc_row-fluid our-clients-row margin-big-b vc_row-o-content-middle vc_row-flex">
+            <div class="wpb_column vc_column_container vc_col-sm-2 vc_col-xs-6">
+                <div class="vc_column-inner ">
+                    <div class="wpb_wrapper">
+                        <div class="wpb_single_image wpb_content_element vc_align_center">
+
+                            <figure class="wpb_wrapper vc_figure">
+                                <div class="vc_single_image-wrapper   vc_box_border_grey"><img width="350"
+                                                                                               height="309"
+                                                                                               src="{% static 'image/sayt.png' %}"
+                                                                                               class="vc_single_image-img attachment-medium"
+                                                                                               alt="" decoding="async"
+                                                                                               loading="lazy"
+
+                                                                                               sizes="(max-width: 250px) 100vw, 250px"/>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wpb_column vc_column_container vc_col-sm-2 vc_col-xs-6">
+                <div class="vc_column-inner ">
+                    <div class="wpb_wrapper">
+                        <div class="wpb_single_image wpb_content_element vc_align_center">
+
+                            <figure class="wpb_wrapper vc_figure">
+                                <div class="vc_single_image-wrapper   vc_box_border_grey"><img width="199"
+                                                                                               height="200"
+                                                                                               src="{% static 'image/rasm.jpg' %}"
+                                                                                               class="vc_single_image-img attachment-medium"
+                                                                                               alt="" decoding="async"
+                                                                                               loading="lazy"
+
+                                                                                               sizes="(max-width: 199px) 100vw, 199px"/>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wpb_column vc_column_container vc_col-sm-2 vc_col-xs-6">
+                <div class="vc_column-inner ">
+                    <div class="wpb_wrapper">
+                        <div class="wpb_single_image wpb_content_element vc_align_center">
+
+                            <figure class="wpb_wrapper vc_figure">
+                                <div class="vc_single_image-wrapper   vc_box_border_grey"><img width="260"
+                                                                                               height="260"
+                                                                                               src="{% static 'image/banafa.png' %}"
+                                                                                               class="vc_single_image-img attachment-medium"
+                                                                                               alt="" decoding="async"
+                                                                                               loading="lazy"
+
+                                                                                               sizes="(max-width: 260px) 100vw, 260px"/>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div> <!-- Main center up -->
+
+</div> <!-- End of .main-content -->
+
+<footer class="footer">
+
+    <div class="container">
+
+
+        <div class="row row-align-end row-align-center-md-max row-space-between md-max-column">
+            <div class="site-copyright margin-medium-t font-accented md-max-margin-medium-v">
+                <ul class="social site-counters row row-justify-center-md-max">
+
+
+                    <li>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </li>
+
+                </ul>
+
+                &copy; 2023 - .... <a target="_blank" href="#" class="copyright">CleanHouse</a>
+            </div>
+
+
+            <div class="payment-methods">
+                <span>Qabul qilamiz: </span>
+
+                <i class="fa fa-cc-mastercard"></i>
+                <i class="fa fa-cc-visa"></i>
+
+            </div>
+        </div> <!-- row -->
+
+
+    </div> <!-- .container -->
+</footer>
+
+
+<div style="display:none">
+</div>
+<script type='text/javascript'
+        src='https://cleanhouse.com.ru/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=5.8.1'
+        id='swv-js'></script>
+<script type='text/javascript' id='contact-form-7-js-extra'>
+    /* <![CDATA[ */
+    var wpcf7 = {
+        "api": {"root": "https:\/\/cleanhouse.com.ru\/wp-json\/", "namespace": "contact-form-7\/v1"},
+        "cached": "1"
+    };
+    /* ]]> */
+</script>
+<script type='text/javascript'
+        src='https://cleanhouse.com.ru/wp-content/plugins/contact-form-7/includes/js/index.js?ver=5.8.1'
+        id='contact-form-7-js'></script>
+<script type='text/javascript'
+        src='https://cleanhouse.com.ru/wp-content/themes/clean/lightbox2/js/lightbox-plus-jquery.min.js?ver=6.3.2'
+        id='lightbox2-js'></script>
+<script type='text/javascript' src='https://cleanhouse.com.ru/wp-content/themes/clean/file/cookie.js?ver=6.3.2'
+        id='cookie-js'></script>
+<script type='text/javascript'
+        src='https://cleanhouse.com.ru/wp-content/themes/clean/file/feedback.factory.min.js?ver=6.3.2'
+        id='factory-js'></script>
+<script type='text/javascript'
+        src='https://cleanhouse.com.ru/wp-content/themes/clean/file/modernizr_2_6_1.js?ver=6.3.2'
+        id='modernizer-js'></script>
+<script type='text/javascript'
+        src='https://cleanhouse.com.ru/wp-content/themes/clean/file/s3.eventable.js?ver=6.3.2'
+        id='eventable-js'></script>
+<script type='text/javascript' src='https://cleanhouse.com.ru/wp-content/themes/clean/file/s3.math.js?ver=6.3.2'
+        id='math-js'></script>
+<script type='text/javascript'
+        src='https://cleanhouse.com.ru/wp-content/themes/clean/file/s3.menu.allin.js?ver=6.3.2' id='allin-js'></script>
+<script type='text/javascript'
+        src='https://cleanhouse.com.ru/wp-content/themes/clean/dist/scripts/main.js?ver=6.3.2' id='main-js'></script>
+<script type='text/javascript'
+        src='https://cleanhouse.com.ru/wp-content/plugins/slimpack/slimpack/_inc/devicepx-jetpack.js?ver=202341'
+        id='devicepx-js'></script>
+<script type='text/javascript' src='https://secure.gravatar.com/js/gprofiles.js?ver=2023Octaa'
+        id='grofiles-cards-js'></script>
+<script type='text/javascript' id='wpgroho-js-extra'>
+    /* <![CDATA[ */
+    var WPGroHo = {"my_hash": ""};
+    /* ]]> */
+</script>
+<script type='text/javascript'
+        src='https://cleanhouse.com.ru/wp-content/plugins/slimpack/slimpack/modules/wpgroho.js?ver=6.3.2'
+        id='wpgroho-js'></script>
+<script type='text/javascript'
+        src='https://cleanhouse.com.ru/wp-content/plugins/wp-review/public/js/js.cookie.min.js?ver=2.1.4'
+        id='js-cookie-js'></script>
+<script type='text/javascript' src='https://cleanhouse.com.ru/wp-includes/js/underscore.min.js?ver=1.13.4'
+        id='underscore-js'></script>
+<script type='text/javascript' id='wp-util-js-extra'>
+    /* <![CDATA[ */
+    var _wpUtilSettings = {"ajax": {"url": "\/wp-admin\/admin-ajax.php"}};
+    /* ]]> */
+</script>
+<script type='text/javascript' src='https://cleanhouse.com.ru/wp-includes/js/wp-util.min.js?ver=6.3.2'
+        id='wp-util-js'></script>
+<script type='text/javascript' id='wp_review-js-js-extra'>
+    /* <![CDATA[ */
+    var wpreview = {
+        "ajaxurl": "https:\/\/cleanhouse.com.ru\/wp-admin\/admin-ajax.php",
+        "loginRequiredMessage": "You must log in to add your review"
+    };
+    /* ]]> */
+</script>
+<script type='text/javascript'
+        src='https://cleanhouse.com.ru/wp-content/plugins/wp-review/public/js/main.js?ver=5.3.5'
+        id='wp_review-js-js'></script>
+<script type='text/javascript' id='wpcf7cf-scripts-js-extra'>
+    /* <![CDATA[ */
+    var wpcf7cf_global_settings = {"ajaxurl": "https:\/\/cleanhouse.com.ru\/wp-admin\/admin-ajax.php"};
+    /* ]]> */
+</script>
+<script type='text/javascript'
+        src='https://cleanhouse.com.ru/wp-content/plugins/cf7-conditional-fields/js/scripts.js?ver=2.3.11'
+        id='wpcf7cf-scripts-js'></script>
+<script type='text/javascript'
+        src='https://www.google.com/recaptcha/api.js?render=6LdWFcIUAAAAAOL-yFrFyX-vgyI8IMZHhrolK2w7&#038;ver=3.0'
+        id='google-recaptcha-js'></script>
+<script type='text/javascript'
+        src='https://cleanhouse.com.ru/wp-includes/js/dist/vendor/wp-polyfill-inert.min.js?ver=3.1.2'
+        id='wp-polyfill-inert-js'></script>
+<script type='text/javascript'
+        src='https://cleanhouse.com.ru/wp-includes/js/dist/vendor/regenerator-runtime.min.js?ver=0.13.11'
+        id='regenerator-runtime-js'></script>
+<script type='text/javascript'
+        src='https://cleanhouse.com.ru/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0'
+        id='wp-polyfill-js'></script>
+<script type='text/javascript' id='wpcf7-recaptcha-js-extra'>
+    /* <![CDATA[ */
+    var wpcf7_recaptcha = {
+        "sitekey": "6LdWFcIUAAAAAOL-yFrFyX-vgyI8IMZHhrolK2w7",
+        "actions": {"homepage": "homepage", "contactform": "contactform"}
+    };
+    /* ]]> */
+</script>
+<script type='text/javascript'
+        src='https://cleanhouse.com.ru/wp-content/plugins/contact-form-7/modules/recaptcha/index.js?ver=5.8.1'
+        id='wpcf7-recaptcha-js'></script>
+<script type='text/javascript'
+        src='https://cleanhouse.com.ru/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js?ver=5.5.2'
+        id='wpb_composer_front_js-js'></script>
+
+
+<SPAN style="DISPLAY: none">
+
+		<!-- Yandex.Metrika counter -->
+
+		<script type="text/javascript">
+			(function (d, w, c) {
+                (w[c] = w[c] || []).push(function () {
+                    try {
+                        w.yaCounter26541660 = new Ya.Metrika({
+                            id: 26541660,
+                            webvisor: true,
+                            clickmap: true,
+                            trackLinks: true,
+                            accurateTrackBounce: true
+                        });
+                    } catch (e) {
+                    }
+                });
+
+                var n = d.getElementsByTagName("script")[0],
+                    s = d.createElement("script"),
+                    f = function () {
+                        n.parentNode.insertBefore(s, n);
+                    };
+                s.type = "text/javascript";
+                s.async = true;
+                s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+                if (w.opera == "[object Opera]") {
+                    d.addEventListener("DOMContentLoaded", f, false);
+                } else {
+                    f();
+                }
+            })(document, window, "yandex_metrika_callbacks");
+
+            {#let name = document.getElementById("name");#}
+            {#let phoneNumber = document.getElementById("phoneNumber");#}
+            {#$.ajax({#}
+            {#    url: "/index",#}
+            {#    method: "POST",#}
+            {#    data: JSON.stringify({name,phoneNumber})#}
+
+
+		</script>
+		<noscript>
+			<div><img src="https://mc.yandex.ru/watch/26541660" style="position:absolute; left:-9999px;" alt=""/></div>
+		</noscript>
+
+    <!-- /Yandex.Metrika counter -->
+	</span>
+
+</body>
+
+</html>
